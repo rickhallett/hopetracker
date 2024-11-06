@@ -131,23 +131,6 @@ export default function LandingPage() {
           </CardContent>
         </Card>
       </div>
-
-      {/* Footer */}
-      <footer className="border-t">
-        <div className="max-w-6xl mx-auto px-4 py-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center mb-4 md:mb-0">
-              <BookOpen className="h-6 w-6 text-primary" />
-              <span className="ml-2 font-bold">HCT</span>
-            </div>
-            <div className="flex space-x-6">
-              <Button variant="ghost">Privacy</Button>
-              <Button variant="ghost">Terms</Button>
-              <Button variant="ghost">Contact</Button>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
