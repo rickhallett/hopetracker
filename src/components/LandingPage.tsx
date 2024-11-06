@@ -57,66 +57,9 @@ const features = [
 ];
 
 export default function LandingPage() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
   return (
     <div className="min-h-screen bg-background">
-      {/* Navigation */}
-      <nav className="border-b">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center">
-              <BookOpen className="h-8 w-8 text-primary" />
-              <span className="ml-2 text-xl font-bold">HCT</span>
-            </div>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-4">
-              <Button variant="ghost">Features</Button>
-              <Button variant="ghost">About</Button>
-              <Button variant="ghost">Contact</Button>
-              <Button 
-                variant={isLoggedIn ? "outline" : "default"}
-                onClick={() => setIsLoggedIn(!isLoggedIn)}
-              >
-                {isLoggedIn ? "Sign Out" : "Sign In"}
-                <LogIn className="ml-2 h-4 w-4" />
-              </Button>
-            </div>
-
-            {/* Mobile menu button */}
-            <div className="md:hidden">
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-              >
-                {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-              </Button>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden border-t">
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              <Button variant="ghost" className="w-full justify-start">Features</Button>
-              <Button variant="ghost" className="w-full justify-start">About</Button>
-              <Button variant="ghost" className="w-full justify-start">Contact</Button>
-              <Button 
-                variant={isLoggedIn ? "outline" : "default"}
-                className="w-full justify-start"
-                onClick={() => setIsLoggedIn(!isLoggedIn)}
-              >
-                {isLoggedIn ? "Sign Out" : "Sign In"}
-                <LogIn className="ml-2 h-4 w-4" />
-              </Button>
-            </div>
-          </div>
-        )}
-      </nav>
 
       {/* Hero Section */}
       <div className="relative">

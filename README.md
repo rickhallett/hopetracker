@@ -1,4 +1,4 @@
-# Homework Compliance Tracker (HCT)
+# Homework Compliance Tracker
 > Turn homework from hope to habit.
 
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
@@ -72,7 +72,7 @@ The Homework Compliance Tracker (HCT) is a comprehensive web application designe
 ### Installation
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/hct.git
+git clone https://github.com/yourusername/hopetracker.git
 
 # Navigate to project directory
 cd hct
@@ -93,19 +93,20 @@ VITE_AUTH_DOMAIN=your_auth_domain
 
 ## Project Structure
 ```
-hct/
+hct-landing/
 ├── src/
 │   ├── components/
-│   │   ├── analytics/
-│   │   ├── check-ins/
-│   │   ├── progress/
-│   │   └── ui/
-│   ├── hooks/
-│   ├── lib/
-│   ├── pages/
-│   └── styles/
-├── public/
-└── tests/
+│   │   ├── ui/
+│   │   │   ├── button.tsx
+│   │   │   ├── card.tsx
+│   │   │   └── badge.tsx
+│   │   └── LandingPage.tsx
+│   ├── App.tsx
+│   ├── main.tsx
+│   └── globals.css
+├── tailwind.config.js
+├── vite.config.ts
+└── tsconfig.json
 ```
 
 ### Component Organization
