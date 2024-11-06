@@ -4,6 +4,10 @@ import { Button } from "@/components/ui/button";
 import { BookOpen, Menu, X, LogIn } from 'lucide-react';
 import React, { useState } from 'react';
 import LandingPage from '@/components/LandingPage';
+import { AuthGuard } from '@/lib/auth/AuthGuard';
+import { AuthProvider } from '@/lib/auth/AuthContext';
+import { Login } from '@/pages/Login';
+import { NotFound } from '@/pages/NotFound';
 
 // Layout Components
 const RootLayout = () => {
@@ -16,7 +20,7 @@ const RootLayout = () => {
       <nav className="border-b">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex items-center justify-between h-16">
-            <div className="flex items-center">
+            <div className="flex items-center" onClick={() => window.location.href = '/'}>
               <BookOpen className="h-8 w-8 text-primary" />
               <span className="ml-2 text-xl font-bold">HCT</span>
             </div>
@@ -132,43 +136,50 @@ const Analytics = () => (
 
 // Router Configuration
 const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <RootLayout />,
-    children: [
-      {
-        index: true,
-        element: <LandingPage />,
-      },
-      {
-        path: 'dashboard',
-        element: <Dashboard />,
-      },
-      {
-        path: 'features',
-        element: <Features />,
-      },
-      {
-        path: 'analytics',
-        element: <Analytics />,
-      },
-      {
-        path: '*',
-        element: (
-          <div className="flex flex-col items-center justify-center min-h-[60vh]">
-            <h1 className="text-4xl font-bold mb-4">404: Page Not Found</h1>
-            <p className="mb-4">Sorry, the page you're looking for doesn't exist.</p>
-            <Button onClick={() => window.location.href = '/'}>
-              Return Home
-            </Button>
-          </div>
-        ),
-      },
-    ],
-  },
-]);
-
-// Root Component
-export const Routes = () => {
-  return <RouterProvider router={router} />;
-};
+    {
+      path: '/',
+      element: <RootLayout />,
+      children: [
+        {
+          index: true,
+          element: <LandingPage />,
+        },
+        {
+          path: 'login',
+          element: <Login />,
+        },
+        {
+          path: 'dashboard',
+          element: (
+            <AuthGuard>
+              <Dashboard />
+            </AuthGuard>
+          ),
+        },
+        {
+          path: 'features',
+          element: <Features />,
+        },
+        {
+          path: 'analytics',
+          element: (
+            <AuthGuard>
+              <Analytics />
+            </AuthGuard>
+          ),
+        },
+        {
+          path: '*',
+          element: <NotFound />,
+        },
+      ],
+    },
+  ]);
+  
+  export const Routes = () => {
+    return (
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
+    );
+  };
